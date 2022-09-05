@@ -41,6 +41,7 @@ public class CalRestController {
 		return calSvc.getCalByscheduleId(scheduleid);
 	}
 
+	//empId가져오기
 	@GetMapping(value = "/{empId}")
 	public List<CalDTO> CalByEmpId(@PathVariable(name = "empId") String empId) {
 		System.out.println(empId);
