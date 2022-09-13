@@ -1,5 +1,6 @@
 package com.balloon.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.balloon.entity.BusinessTripPlan;
@@ -24,9 +25,9 @@ public class BizTpDTO {
 
 	private Byte documentStatus;
 
-	private LocalDateTime startDate;
+	private LocalDate startDate;
 
-	private LocalDateTime endDate;
+	private LocalDate endDate;
 
 	private String destination;
 

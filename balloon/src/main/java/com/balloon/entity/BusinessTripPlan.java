@@ -1,5 +1,6 @@
 package com.balloon.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -48,10 +49,10 @@ public class BusinessTripPlan {
 	private Byte documentStatus;
 
 	@Column(name = "start_date")
-	private LocalDateTime startDate;
+	private LocalDate startDate;
 
 	@Column(name = "end_date")
-	private LocalDateTime endDate;
+	private LocalDate endDate;
 
 	@Column(name = "destination", length = 40)
 	private String destination;
