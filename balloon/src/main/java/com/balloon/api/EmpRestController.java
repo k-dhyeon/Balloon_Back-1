@@ -21,8 +21,6 @@ import com.balloon.dto.EmpDTO;
 import com.balloon.dto.EmpRequestDTO;
 import com.balloon.dto.EmpResByAdminDTO;
 import com.balloon.dto.EmpResponseDTO;
-import com.balloon.dto.PageRequestDTO;
-import com.balloon.dto.PageResultDTO;
 import com.balloon.entity.Employee;
 import com.balloon.service.EmpServiceImpl;
 
@@ -36,20 +34,20 @@ public class EmpRestController {
 
 	private final EmpServiceImpl empSvc;
 
-	@GetMapping("/list")
-	public PageResultDTO<EmpDTO, Employee> findEmpList(PageRequestDTO pageRequestDTO) throws Exception {
-		try {
-			if (pageRequestDTO == null) {
-				throw new Exception("입력받은 page, size 값이 없습니다.");
-			} else {
-				PageResultDTO<EmpDTO, Employee> pageResultDTO = empSvc.findEmpList(pageRequestDTO);
-				return pageResultDTO;
-			}
-		} catch (Exception e) {
-			e.getMessage();
-			throw new Exception("출력할 사원 정보가 없습니다.");
-		}
-	}
+//	@GetMapping("/list")
+//	public PageResultDTO<EmpDTO, Employee> findEmpList(PageRequestDTO pageRequestDTO) throws Exception {
+//		try {
+//			if (pageRequestDTO == null) {
+//				throw new Exception("입력받은 page, size 값이 없습니다.");
+//			} else {
+//				PageResultDTO<EmpDTO, Employee> pageResultDTO = empSvc.findEmpList(pageRequestDTO);
+//				return pageResultDTO;
+//			}
+//		} catch (Exception e) {
+//			e.getMessage();
+//			throw new Exception("출력할 사원 정보가 없습니다.");
+//		}
+//	}
 
 	@GetMapping("/emps")
 	public List<EmpDTO> findEmps() throws Exception {
@@ -186,6 +184,21 @@ public class EmpRestController {
 				throw new Exception("사원 정보가 들어오지 않음");
 			} else {
 				empSvc.updateEmpByAdmin(empDTO);
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+
+	@CrossOrigin(origins = { "http://localhost:3000" })
+	@PutMapping("/update/mypage")
+	public void updateEmpByMypage(@Valid @RequestBody EmpResponseDTO empDTO) {
+		try {
+			if (empDTO == null) {
+				throw new Exception("사원 정보가 들어오지 않음");
+			} else {
+				System.out.println(empDTO);
+				empSvc.updateEmpByMypage(empDTO);
 			}
 		} catch (Exception e) {
 			e.getMessage();

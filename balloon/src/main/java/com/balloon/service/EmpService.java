@@ -5,14 +5,12 @@ import java.util.List;
 import com.balloon.dto.EmpDTO;
 import com.balloon.dto.EmpResByAdminDTO;
 import com.balloon.dto.EmpResponseDTO;
-import com.balloon.dto.PageRequestDTO;
-import com.balloon.dto.PageResultDTO;
 import com.balloon.entity.Employee;
 
 public interface EmpService {
 
 	// 사원 정보 출력 - 페이징 처리
-	public PageResultDTO<EmpDTO, Employee> findEmpList(PageRequestDTO pageRequestDTO);
+//	public PageResultDTO<EmpDTO, Employee> findEmpList(PageRequestDTO pageRequestDTO);
 
 	// 사번으로 회원찾기
 	public EmpDTO findEmpByEmpId(String empId) throws Exception;
@@ -39,6 +37,9 @@ public interface EmpService {
 
 	// 관리자가 사원 수정
 	public void updateEmpByAdmin(EmpResByAdminDTO empDTO);
+
+	// 사원이 사원 수정
+	public void updateEmpByMypage(EmpResponseDTO empDTO);
 
 	// 사번과 이름 입력받아 사원 이름 수정
 	public EmpResponseDTO changeEmpName(String empId, String empName);

@@ -46,9 +46,20 @@ public class ChatREmpServiceImpl implements ChatREmpService {
 
 	@Override
 	@Transactional
-	public List<ChatroomEmployeeDTO> getBotchatroom(List<String> empId) {
+	public List<ChatroomEmployeeDTO> getSchBotchatroom(List<String> empId) {
 		List<ChatroomEmployeeDTO> chatroomEmployeeDTOList = new ArrayList<ChatroomEmployeeDTO>();
 		List<ChatroomEmployee> chatroomEmployeeEntityList = chatREmpRepository.findChatroomEmployeeByempId(empId);
+		for (ChatroomEmployee chatroomEmployeeEntity : chatroomEmployeeEntityList) {
+			chatroomEmployeeDTOList.add(chatroomEmployeeEntity.toDTO(chatroomEmployeeEntity));
+		}
+		return chatroomEmployeeDTOList;
+	}
+
+	@Override
+	@Transactional
+	public List<ChatroomEmployeeDTO> getAprlBotchatroom(List<String> empId) {
+		List<ChatroomEmployeeDTO> chatroomEmployeeDTOList = new ArrayList<ChatroomEmployeeDTO>();
+		List<ChatroomEmployee> chatroomEmployeeEntityList = chatREmpRepository.findChatroomEmployeeByempId2(empId);
 		for (ChatroomEmployee chatroomEmployeeEntity : chatroomEmployeeEntityList) {
 			chatroomEmployeeDTOList.add(chatroomEmployeeEntity.toDTO(chatroomEmployeeEntity));
 		}

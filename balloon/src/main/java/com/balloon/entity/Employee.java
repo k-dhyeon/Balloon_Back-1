@@ -23,6 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.balloon.dto.EmpDTO;
 import com.balloon.dto.EmpResByAdminDTO;
+import com.balloon.dto.EmpResponseDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -179,12 +180,15 @@ public class Employee implements Persistable<String> {
 		this.userRoleGrade = empDTO.getUserRoleGrade();
 	}
 
-	public void updateEmpByUser(EmpDTO empDTO) {
+	public void updateEmpByUser(EmpResponseDTO empDTO) {
 		this.mobile = empDTO.getMobile();
-		this.photo = empDTO.getPhoto();
 		this.empMail = empDTO.getEmpMail();
 		this.address = empDTO.getAddress();
 		this.licensePlate = empDTO.getLicensePlate();
+	}
+
+	public void updatePhotoByUser(EmpDTO empDTO) {
+		this.photo = empDTO.getPhoto();
 	}
 
 	public void updateEmpByPerssonelAppointment(EmpDTO empDTO) {

@@ -28,12 +28,10 @@ public class S3ServiceImpl implements S3Service {
 	private final AmazonS3 s3Client;
 
 	@Override
-	public String uploadProfile(MultipartFile multiFile) {
-		System.out.println("ssssssssssss");
-		System.out.println(multiFile);
-		System.out.println("ssssssssssss");
+	public String uploadProfile(MultipartFile multiFile, String empId) {
 		File file = convertMultipartFileToFile(multiFile);
 		String fileName = System.currentTimeMillis() + "_" + multiFile.getOriginalFilename();
+
 		s3Client.putObject(new PutObjectRequest(bucket, "images/" + fileName, file));
 
 		file.delete();

@@ -42,9 +42,15 @@ public class ChatREmpRestController {
 	}
 
 	// 이미 일정봇과 채팅이 존재하는 사원 찾기
-	@PostMapping(value = "/botchatroom", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/schbotchatroom", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public List<ChatroomEmployeeDTO> calendarBot(@RequestBody List<String> empIds) {
-		return chatREmpServicImpl.getBotchatroom(empIds);
+		return chatREmpServicImpl.getSchBotchatroom(empIds);
+	}
+
+	// 이미 결재봇과 채팅이 존재하는 사원 찾기
+	@PostMapping(value = "/apvlbotchatroom", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public List<ChatroomEmployeeDTO> approvalBot(@RequestBody List<String> empIds) {
+		return chatREmpServicImpl.getAprlBotchatroom(empIds);
 	}
 
 	// chatroomEmployee T에 초대할 사람과 초대한 사람 넣어주기

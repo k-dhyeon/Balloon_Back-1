@@ -47,7 +47,6 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 
 		http.authorizeRequests()
 
-//				.antMatchers(HttpMethod.POST, "/auth/login").permitAll()//
 //				.antMatchers(HttpMethod.GET, "/unit/**").permitAll()//
 ////				.antMatchers(HttpMethod.GET, "/employee/unit/list/**").hasAnyRole("USER", "MANAGER", "ADMIN")//
 //				.antMatchers("/chatstart").hasAnyRole("USER", "MANAGER", "ADMIN")//
