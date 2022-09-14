@@ -34,7 +34,34 @@ public class EmpTimeRestController {
 		}
 	};
 
-	@PostMapping(value = "/on/{empId}")
+	@GetMapping("/on/{empId}")
+	public Integer findWorkOn(@Valid @PathVariable(value = "empId") String empId) {
+		try {
+			if (empId == null) {
+				throw new Exception("입력받은 값이 없습니다.");
+			}
+			return empTimeSvc.findWorkOn(empId);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return null;
+	}
+
+	@GetMapping("/off/{empId}")
+	public Integer findWorkOff(@Valid @PathVariable(value = "empId") String empId) {
+		try {
+			if (empId == null) {
+				throw new Exception("입력받은 값이 없습니다.");
+			}
+
+			return empTimeSvc.findWorkOff(empId);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return null;
+	}
+
+	@PostMapping(value = "/in/{empId}")
 	public boolean findWorkIn(@Valid @PathVariable(value = "empId") String empId) {
 		try {
 			if (empId == null) {
@@ -48,7 +75,6 @@ public class EmpTimeRestController {
 		} catch (Exception e) {
 			e.getMessage();
 		}
-
 		return false;
 	}
 

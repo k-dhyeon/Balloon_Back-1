@@ -34,21 +34,6 @@ public class EmpRestController {
 
 	private final EmpServiceImpl empSvc;
 
-//	@GetMapping("/list")
-//	public PageResultDTO<EmpDTO, Employee> findEmpList(PageRequestDTO pageRequestDTO) throws Exception {
-//		try {
-//			if (pageRequestDTO == null) {
-//				throw new Exception("입력받은 page, size 값이 없습니다.");
-//			} else {
-//				PageResultDTO<EmpDTO, Employee> pageResultDTO = empSvc.findEmpList(pageRequestDTO);
-//				return pageResultDTO;
-//			}
-//		} catch (Exception e) {
-//			e.getMessage();
-//			throw new Exception("출력할 사원 정보가 없습니다.");
-//		}
-//	}
-
 	@GetMapping("/emps")
 	public List<EmpDTO> findEmps() throws Exception {
 

@@ -29,11 +29,21 @@ public class EmpTimeServiceImpl implements EmpTimeService {
 		return empTimeDTOList;
 	}
 
+	@Override
+	public Integer findWorkOn(String empId) {
+		return empTimeRepo.findWorkOn(empId);
+	}
+
+	@Override
+	public Integer findWorkOff(String empId) {
+		return empTimeRepo.findWorkOff(empId);
+	}
+
 	@Transactional(readOnly = true)
 	@Override
 	public Integer findWorkIn(String empId) {
-		Integer workOn = empTimeRepo.findWorkOn(empId);
-		Integer workOff = empTimeRepo.findWorkOff(empId);
+		Integer workOn = findWorkOn(empId);
+		Integer workOff = findWorkOff(empId);
 		if (workOn == 1 && workOn > workOff) {
 			return workOn;
 		}

@@ -8,6 +8,10 @@ public interface EmpTimeService {
 
 	public List<EmpTimeDTO> findEmpTimeList();
 
+	public Integer findWorkOn(String empId);
+
+	public Integer findWorkOff(String empId);
+
 	public Integer findWorkIn(String empId);
 
 	public boolean startWork(String empId);

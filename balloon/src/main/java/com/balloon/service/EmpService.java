@@ -41,6 +41,8 @@ public interface EmpService {
 	// 사원이 사원 수정
 	public void updateEmpByMypage(EmpResponseDTO empDTO);
 
+	public void updateEmpByProfile(String empId, String photo);
+
 	// 사번과 이름 입력받아 사원 이름 수정
 	public EmpResponseDTO changeEmpName(String empId, String empName);
 

@@ -13,11 +13,8 @@ import com.balloon.entity.EmployeeTimeId;
 @Repository
 public interface EmpTimeRepository extends JpaRepository<EmployeeTime, EmployeeTimeId> {
 
-	@Query(value = "SELECT COUNT(*) FROM employee_time WHERE emp_id= :empId AND work_date = current_date;", nativeQuery = true)
+	@Query(value = "SELECT COUNT(*) FROM employee_time WHERE emp_id = :empId AND work_date = current_date AND work_time IS NOT NULL ;", nativeQuery = true)
 	public Integer findWorkOn(@Param(value = "empId") String empId);
-
-	@Query(value = "SELECT COUNT(*) FROM employee_time WHERE emp_id= :empId AND out_time IS NOT NULL AND work_date = current_date;", nativeQuery = true)
-	public Integer findWorkOff(@Param(value = "empId") String empId);
 
 	@Query(value = "INSERT employee_time( emp_id, work_date, work_time) VALUES ( :empId, current_date, current_timestamp);", nativeQuery = true)
 	@Modifying
@@ -33,5 +30,13 @@ public interface EmpTimeRepository extends JpaRepository<EmployeeTime, EmployeeT
 //   @Modifying
 //   @Transactional
 //   public int endlessWork(@Param(value = "empId") String empId);
+
+	@Query(value = "SELECT COUNT(*) FROM employee_time WHERE  emp_id = :empId AND work_date = current_date AND out_time IS NOT NULL ;", nativeQuery = true)
+	public Integer findWorkOff(@Param(value = "empId") String empId);
+
+//	@Query(value = "UPDATE employee_time SET leave_work=\"야근\" WHERE emp_id= :empId AND work_date = current_date();", nativeQuery = true)
+//	@Modifying
+//	@Transactional
+//	public int endlessWork(@Param(value = "empId") String empId);
 
 }

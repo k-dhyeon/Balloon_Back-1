@@ -187,8 +187,8 @@ public class Employee implements Persistable<String> {
 		this.licensePlate = empDTO.getLicensePlate();
 	}
 
-	public void updatePhotoByUser(EmpDTO empDTO) {
-		this.photo = empDTO.getPhoto();
+	public void updatePhotoByUser(String photo) {
+		this.photo = photo;
 	}
 
 	public void updateEmpByPerssonelAppointment(EmpDTO empDTO) {
