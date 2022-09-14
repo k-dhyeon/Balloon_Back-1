@@ -24,14 +24,14 @@ public interface EmpTimeRepository extends JpaRepository<EmployeeTime, EmployeeT
 	@Transactional
 	public int startWork(@Param(value = "empId") String empId);
 
-	@Query(value = "UPDATE employee_time SET leave_work=\"퇴근\" ,out_time= DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d 18:30:00') WHERE emp_id= :empId AND work_date = current_date();", nativeQuery = true)
+	@Query(value = "UPDATE employee_time SET leave_work=\"퇴근\" ,out_time= CURRENT_TIMESTAMP WHERE emp_id= :empId AND work_date = current_date();", nativeQuery = true)
 	@Modifying
 	@Transactional
 	public int endWork(@Param(value = "empId") String empId);
 
-//	@Query(value = "UPDATE employee_time SET leave_work=\"야근\" WHERE emp_id= :empId AND work_date = current_date();", nativeQuery = true)
-//	@Modifying
-//	@Transactional
-//	public int endlessWork(@Param(value = "empId") String empId);
+//   @Query(value = "UPDATE employee_time SET leave_work=\"야근\" WHERE emp_id= :empId AND work_date = current_date();", nativeQuery = true)
+//   @Modifying
+//   @Transactional
+//   public int endlessWork(@Param(value = "empId") String empId);
 
 }
