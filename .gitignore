@@ -24,6 +24,7 @@ local.properties
 .recommenders
 application-mysql.properties
 application-jwt.properties
+*.properties
 
 # servers
 servers/
